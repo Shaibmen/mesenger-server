@@ -22,9 +22,12 @@ namespace Server_app
     /// </summary>
     public partial class Server : Window
     {
+        private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private Socket soket;
         private List<Socket> clients = new List<Socket>();
         private List<string> userNames = new List<string>();
+        private Dictionary<string, string> clientIpToName = new Dictionary<string, string>();
+
         public Server()
         {
             InitializeComponent();
@@ -33,31 +36,30 @@ namespace Server_app
             soket.Bind(ipPoint);
             soket.Listen(1000);
 
-            ListenToClients();
+            Task.Run(() => ListenToClients(cancellationTokenSource.Token), cancellationTokenSource.Token);
 
-            
         }
 
-        private async Task ListenToClients()
+        private async Task ListenToClients(CancellationToken cancellationToken)
         {
-            while(true)
+            while(!cancellationToken.IsCancellationRequested)
             {
                 var client = await soket.AcceptAsync();
                 clients.Add(client);
-
                 string userNamesString = string.Join("#", userNames);
                 await SendName(client, userNamesString);
 
-                RecieveMessage(client);
+                Task.Run(() => RecieveMessage(client, cancellationToken), cancellationToken);
+            
             }
         }
 
-        private async Task RecieveMessage(Socket client)
+        private async Task RecieveMessage(Socket client, CancellationToken cancellationToken)
         {
-            while(true)
+            while(!cancellationToken.IsCancellationRequested)
             {
                 byte[] byritos = new byte[1024];
-                await client.ReceiveAsync(byritos);
+                int BytesRecirverd = await client.ReceiveAsync(byritos);
                 string message = Encoding.UTF8.GetString(byritos);
 
                 if (message.Contains("#"))
@@ -74,6 +76,15 @@ namespace Server_app
                     {
                         SendName(item, $"#{name}");
                     }
+
+                    //cловарик для дисконекта ip зачение name ключ
+                    IPEndPoint remoteEndPoint = (IPEndPoint)client.RemoteEndPoint;
+                    string clientIp = remoteEndPoint.Address.ToString();
+                    clientIpToName[clientIp] = name;
+                }
+                if (message.Contains("/disconnect"))
+                {
+                    DisconnectClient(client);
                 }
                 else
                 {
@@ -97,5 +108,43 @@ namespace Server_app
             byte[] bytes = Encoding.UTF8.GetBytes(name);
             await client.SendAsync(bytes, SocketFlags.None);
         }
+
+        private async Task DisconnectClient(Socket client)
+        {
+            
+            IPEndPoint remoteEndPoint = (IPEndPoint)client.RemoteEndPoint;
+            string clientIp = remoteEndPoint.Address.ToString();
+
+            // из сокета
+            clients.Remove(client);
+
+            // Удаление записи из словаря
+            if (clientIpToName.ContainsKey(clientIp))
+            {
+                string userName = clientIpToName[clientIp];
+                clientIpToName.Remove(clientIp);
+
+                // в именах
+                userNames.Remove(userName);
+                UsersLbx.Items.Remove(userName);
+
+                
+                string message = $"{userName} отключился.";
+                MessagesLbx.Items.Add(message);
+                foreach (var item in clients)
+                {
+                    await SendMessage(item, message);
+                }
+            }
+
+            client.Shutdown(SocketShutdown.Both);
+            client.Close();
+        }
+        public void CloseServer()
+        {
+            cancellationTokenSource.Cancel();
+            soket.Close();
+        }
     }
 }
+    

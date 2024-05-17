@@ -1,0 +1,83 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\mesenger-server\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4CAA4C-CEEB-4AA5-BE7E-384FB13A4DC7}|Server_app.csproj|c:\\projects\\mesenger-server\\server.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4CAA4C-CEEB-4AA5-BE7E-384FB13A4DC7}|Server_app.csproj|solutionrelative:server.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4CAA4C-CEEB-4AA5-BE7E-384FB13A4DC7}|Server_app.csproj|c:\\projects\\mesenger-server\\server.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BB4CAA4C-CEEB-4AA5-BE7E-384FB13A4DC7}|Server_app.csproj|solutionrelative:server.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4CAA4C-CEEB-4AA5-BE7E-384FB13A4DC7}|Server_app.csproj|c:\\projects\\mesenger-server\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BB4CAA4C-CEEB-4AA5-BE7E-384FB13A4DC7}|Server_app.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4CAA4C-CEEB-4AA5-BE7E-384FB13A4DC7}|Server_app.csproj|c:\\projects\\mesenger-server\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4CAA4C-CEEB-4AA5-BE7E-384FB13A4DC7}|Server_app.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Server.xaml",
+              "DocumentMoniker": "C:\\Projects\\mesenger-server\\Server.xaml",
+              "RelativeDocumentMoniker": "Server.xaml",
+              "ToolTip": "C:\\Projects\\mesenger-server\\Server.xaml",
+              "RelativeToolTip": "Server.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-17T06:24:46.369Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Server.xaml.cs",
+              "DocumentMoniker": "C:\\Projects\\mesenger-server\\Server.xaml.cs",
+              "RelativeDocumentMoniker": "Server.xaml.cs",
+              "ToolTip": "C:\\Projects\\mesenger-server\\Server.xaml.cs",
+              "RelativeToolTip": "Server.xaml.cs",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAowF4AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T06:24:46.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Projects\\mesenger-server\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Projects\\mesenger-server\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-17T06:24:47.117Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Projects\\mesenger-server\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Projects\\mesenger-server\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAD4vxoAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T06:24:47.118Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

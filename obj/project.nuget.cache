@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gmMZH+2UacSN1RUJAjNLgcBiGvNQIQiiDCO5/yAYy2vwX2CeAfI9yCmbQe5JoFVR6AKAOX6pz26rBszMw0Lyww==",
+  "dgSpecHash": "Vn0Ya6Pafv0AM1kZ0qKXlIY5R6b2dAdhD/Wk5XmtGEbDMMttWujixtICffVo/o6ZV/iaVnQ63GABmz78FRueEA==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\C#\\Server_app\\Server_app.csproj",
+  "projectFilePath": "C:\\Projects\\mesenger-server\\Server_app.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
