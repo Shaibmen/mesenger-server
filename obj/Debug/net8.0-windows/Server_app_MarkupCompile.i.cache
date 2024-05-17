@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Projects\mesenger-server\obj\Debug\net8.0-windows\
+D:\Projects\C#\mesenger-server\obj\Debug\net8.0-windows\
 Server_app
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Projects\mesenger-server\App.xaml
+D:\Projects\C#\mesenger-server\App.xaml
 2-629102475
 
 7802261532
-198-1509178875
+198-294894759
 MainWindow.xaml;Server.xaml;
 
-True
+False
 
