@@ -85,7 +85,7 @@ namespace Server_app {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Server_app;V1.0.0.0;component/server.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Server_app;component/server.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Server.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
