@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\Projects\C#\mesenger-server\App.xaml
-2-629102475
+31314811958
 
-5-1790233506
+6316525558
 198-294894759
-MainWindow.xaml;Server.xaml;
+ClientWindow.xaml;MainWindow.xaml;Server.xaml;
 
 False
 

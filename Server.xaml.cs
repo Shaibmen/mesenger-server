@@ -21,20 +21,35 @@ namespace Server_app
     /// <summary>
     /// Логика взаимодействия для Server.xaml
     /// </summary>
+    /// 
+    
     public partial class Server : Window
     {
+        DateTime currentTime = DateTime.Now;
         private Socket soket;
         private List<Socket> clients = new List<Socket>();
         private List<string> userNames = new List<string>();
         private Dictionary<string, string> clientIpToName = new Dictionary<string, string>();
+        private TimeSpan receiveTimeout = TimeSpan.FromSeconds(1);
+        string Name { get; set; }
 
-        public Server()
+        public Server(string name)
         {
+            this.Name = name;
             InitializeComponent();
             IPEndPoint ipPoint = new IPEndPoint(IPAddress.Any, 8888);
             soket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             soket.Bind(ipPoint);
             soket.Listen(1000);
+
+
+            userNames.Add(Name);
+            UsersLbx.Items.Add(Name);
+            string govno = $"#{Name}";
+            foreach (var item in clients)
+            {
+                SendMessage(item, govno);
+            }
 
             ListenToClients();
 
@@ -51,6 +66,7 @@ namespace Server_app
             }
         }
 
+        //для дисконекта чтобы сообщеньки были
         private async Task HandleClientDisconnect(Socket client)
         {
             try
@@ -71,6 +87,9 @@ namespace Server_app
             {
                 while (true)
                 {
+
+                    client.ReceiveTimeout = (int)receiveTimeout.TotalMilliseconds;
+
                     byte[] byritos = new byte[1024];
                     int byresReceived = await client.ReceiveAsync(byritos);
                     if (byresReceived == 0)
@@ -100,7 +119,10 @@ namespace Server_app
 
                             //для старых участников #не забыть
                             string newUserMessage = $"#{name}";
-                            MessagesLbx.Items.Add(newUserMessage);
+
+                            /*MessagesLbx.Items.Add(newUserMessage);*/
+                            Logi.Items.Add(string.Join("Присоединился: ",newUserMessage));
+
                             foreach (var item in clients)
                             {
                                 if (item != client)
@@ -118,7 +140,26 @@ namespace Server_app
 
                     else if (message.Contains("/disconnect"))
                     {
-                        // заменяем вызов DisconnectClient(client) на HandleClientDisconnect(client) 
+                        IPEndPoint remoteEndPoint = (IPEndPoint)client.RemoteEndPoint;
+                        string clientIp = remoteEndPoint.Address.ToString();
+                        string disconnectingUser = clientIpToName[clientIp];
+
+                        UsersLbx.Items.Remove(disconnectingUser);
+
+                        string messageToSend = $"{disconnectingUser} отключился.";
+                        Logi.Items.Add(messageToSend);
+
+                        /*MessagesLbx.Items.Add(messageToSend);*/
+
+
+                        foreach (var item in clients)
+                        {
+                            if (item != client)
+                            {
+                                await SendMessage(item, messageToSend);
+                            }
+                        }
+
                         await HandleClientDisconnect(client);
                         break;
                     }
@@ -138,7 +179,7 @@ namespace Server_app
             }
             catch (Exception ex)
             {
-
+          
             }
             finally
             {
@@ -166,12 +207,12 @@ namespace Server_app
                 UsersLbx.Items.Remove(userName);
 
 
-                string message = $"{userName} отключился.";
+                /*string message = $"{userName} отключился.";
                 MessagesLbx.Items.Add(message);
                 foreach (var item in clients)
                 {
                     await SendMessage(item, message);
-                }
+                }*/
             }
 
             client.Shutdown(SocketShutdown.Both);
@@ -190,7 +231,35 @@ namespace Server_app
             await client.SendAsync(bytes, SocketFlags.None);
         }
 
-        
+
+        private async Task SendMessageToAllClients(string message)
+        {
+            foreach (var client in clients)
+            {
+                await SendMessage(client, message);
+            }
+        }
+
+        private async void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            string message = DlaMesseges.Text.Trim();
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
+
+            message = $"[{currentTime}] [{Name}]: {message}";
+            MessagesLbx.Items.Add(message);
+            await SendMessageToAllClients(message);
+        }
+
+        private void EXIT(object sender, RoutedEventArgs e)
+        {
+            soket.Close();
+            var mainwind = new MainWindow();
+            mainwind.Show();
+            this.Close();
+        }
     }
 }
     

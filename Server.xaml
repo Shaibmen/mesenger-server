@@ -11,14 +11,22 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Админское окно" HorizontalAlignment="Center" Margin="5" FontSize="30" Grid.Column="1"/>
-        <TextBlock Text="Сообщения: " Grid.Row="1" HorizontalAlignment="Center" Margin="5" FontSize="30" Grid.Column="1"/>
-        <ListBox Grid.Row="2" x:Name="MessagesLbx" Grid.Column="1"/>
-        <ListBox x:Name="UsersLbx" Grid.Column="0" Grid.RowSpan="3"/>
+        <TextBlock Text="Админское окно" HorizontalAlignment="Center" Margin="5" FontSize="30" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <TextBlock Text="Сообщения: " Grid.Row="1" HorizontalAlignment="Center" Margin="5" FontSize="30" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <ListBox Grid.Row="2" x:Name="MessagesLbx" Grid.Column="1" Grid.ColumnSpan="3"/>
+        <ListBox x:Name="UsersLbx" Grid.Column="0" Grid.RowSpan="2"/>
+        <ListBox x:Name="Logi" Grid.Column="0" Grid.Row="2"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="Отправить" FontSize="25" Click="SendButton_Click"/>
+        <Button Grid.Row="3" Grid.Column="3" Content="ВЫХОД" FontSize="25" Click="EXIT"/>
+        <TextBox x:Name="DlaMesseges" Grid.Row="3" Grid.Column="0" />
+
     </Grid>
 </Window>

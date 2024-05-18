@@ -67,3 +67,5 @@ D:\Projects\C#\mesenger-server\obj\Debug\net8.0-windows\refint\Server_app.dll
 D:\Projects\C#\mesenger-server\obj\Debug\net8.0-windows\Server_app.pdb
 D:\Projects\C#\mesenger-server\obj\Debug\net8.0-windows\Server_app.genruntimeconfig.cache
 D:\Projects\C#\mesenger-server\obj\Debug\net8.0-windows\ref\Server_app.dll
+D:\Projects\C#\mesenger-server\obj\Debug\net8.0-windows\ClientWindow.g.cs
+D:\Projects\C#\mesenger-server\obj\Debug\net8.0-windows\ClientWindow.baml

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,14 +24,27 @@ namespace Server_app
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            var Server1 = new Server();
+            string name = NameUser.Text;
+            
+            var Server1 = new Server(name);
             Server1.Show();
             this.Close();
         }
 
         private void Join_Click(object sender, RoutedEventArgs e)
         {
-
+            if (IpAddres.Text != null && NameUser.Text != null)
+            {
+                string ip = IpAddres.Text;
+                string name = NameUser.Text;
+                ClientWindow clientWindow = new ClientWindow(ip, name);
+                clientWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("заполни все поля");
+            }
         }
     }
 }
